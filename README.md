@@ -17,11 +17,9 @@ FROM Incidents
 WHERE IncidentState is null 
 
 #How to use Case?
-
-SELECT DurationSeconds, 
-
-      case when (DurationSeconds <= 120) then 1
-         
+      SELECT DurationSeconds, 
+       
+       case when (DurationSeconds <= 120) then 1
        when (DurationSeconds > 120 AND DurationSeconds <= 600) then 2
            
        when (DurationSeconds > 601 AND DurationSeconds <= 1200) then 3
@@ -29,6 +27,5 @@ SELECT DurationSeconds,
        when (DurationSeconds > 1201 AND DurationSeconds <= 5000) then 4
    
        ELSE 5 
-       END AS SecondGroup   
-FROM Incidents
+       END AS SecondGroup   FROM Incidents
 
