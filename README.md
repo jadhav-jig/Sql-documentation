@@ -176,3 +176,26 @@ SELECT OrderPrice AS ModeOrderPrice
 FROM ModePrice
 -- Select the maximum UnitPriceFrequency from the CTE
 WHERE UnitPriceFrequency IN ( SELECT max(UnitPriceFrequency) FROM ModePrice)
+
+
+
+#enter data in table
+
+
+-- Declare @RideDates
+Declare @RideDates TABLE(
+    -- Define RideStart column
+	RideStart date, 
+    -- Define RideEnd column
+    RideEnd date)
+-- Populate @RideDates
+Insert into @RideDates(RideStart, RideEnd)
+-- Select the unique date values of StartDate and EndDate
+SELECT DISTINCT
+    -- Cast StartDate as date
+	CAST(StartDate as date),
+    -- Cast EndDate as date
+	CAST(EndDate as date) 
+FROM CapitalBikeShare 
+SELECT * 
+FROM @RideDates
